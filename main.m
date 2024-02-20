@@ -1,4 +1,5 @@
-clear; clc; close all; addpath('utils\');[y,fs]=audioread('data/EQ2401Project2data2024.wav');
+clear; clc; addpath('utils\');[y,fs]=audioread('data/EQ2401Project2data2024.wav');
+close all
 
 %% LMS
 
@@ -8,7 +9,7 @@ step_lms = 0.02;
 tic;
 [thetahatlms, xhatlms, yhatlms] = lms(y, N_lms, step_lms, delay_lms); 
 t_lms = toc; 
-disp(['Execution time of LMS = ', num2str(t_lms), ' second(s)']);
+disp(['Execution time of LMS  = ', num2str(t_lms), ' second(s)']);
 
 %% NLMS
 
@@ -26,21 +27,20 @@ disp(['Execution time of NLMS = ', num2str(t_nlms), ' second(s)']);
 
 N_rls = 200;
 delay_rls = 32;
-lambda_rls = 0.99999;
+lambda_rls = 1-1e-5;
 tic;
-[thetahatnrls, xhatrls, yhatrls] = rls(y, N_rls, lambda_rls, delay_rls);
+[thetahatrls, xhatrls, yhatrls] = rls(y, N_rls, lambda_rls, delay_rls);
 t_rls = toc; 
-disp(['Execution time of RLS = ', num2str(t_rls), ' second(s)']);
+disp(['Execution time of RLS  = ', num2str(t_rls), ' second(s)']);
 
-
-% hp = fir1(128,[0.2 1-1e-6],hamming(129));
-% xhatlms_hp = conv(hp,xhatlms);
 
 %% Plots
 
+dynamicWeightResponsePlot(thetahatlms, thetahatnlms, thetahatrls, 1:10:1000)
+pause(0.5)
+dynamicWeightResponsePlot(thetahatlms, thetahatnlms, thetahatrls, 1:200:length(y))
 plotComp(y, xhatlms, xhatnlms, xhatrls, yhatlms, yhatnlms, yhatrls)
-dynamicWeightPlot(thetahatlms, thetahatnlms, thetahatnrls, 1:500)
-dynamicWeightPlot(thetahatlms, thetahatnlms, thetahatnrls, 11900:12300)
+plotWeightProgress(thetahatlms, thetahatnlms, thetahatrls)
 
 %% Play Sound, the order of sound: Original, LMS, NLMS, RLS
 
@@ -50,8 +50,8 @@ pause(delta_t)
 soundsc(xhatlms, fs)
 pause(delta_t)
 soundsc(xhatnlms, fs)
-% % pause(delta_t)
-% % soundsc(xhat2nlms, fs)
+% pause(delta_t)
+% soundsc(xhat2nlms, fs)
 pause(delta_t)
 soundsc(xhatrls, fs)
 

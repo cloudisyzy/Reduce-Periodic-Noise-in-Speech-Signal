@@ -34,7 +34,7 @@ function [thetahat,xhat,yhat] = rls(y,N,lambda,delay)
     yhat = zeros(M, 1);
     thetahat = zeros(N, M+1);
     K = zeros(N, M);
-    P = 10000 * eye(N);
+    P = 10 * eye(N);
 
     % Loop
     for n = 1:M
