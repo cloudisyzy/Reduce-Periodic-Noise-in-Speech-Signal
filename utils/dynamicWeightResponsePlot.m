@@ -23,17 +23,36 @@ function dynamicWeightResponsePlot(weightLMS, weightNLMS, weightRLS, idxRange)
 
         % Frequency domain plot
         subplot(2,1,2);  
-        [~,~] = spectraEstimationSmall(weightLMS(:, i),'half',1);
-        hold on;
-        [~,~] = spectraEstimationSmall(weightNLMS(:, i),'half',1);
-        [~,~] = spectraEstimationSmall(weightRLS(:, i),'half',1);
-        ylim([-90 -10])
+        H_lms = abs(fft(weightLMS(:, i), 512));
+        H_lms = H_lms(1:512/2 +1);
+        plot(linspace(0,0.5,length(H_lms)), 20*log10(H_lms))
+        hold on
+        H_nlms = abs(fft(weightNLMS(:, i), 512));
+        H_nlms = H_nlms(1:512/2 +1);
+        plot(linspace(0,0.5,length(H_nlms)), 20*log10(H_nlms))
+        H_rls = abs(fft(weightRLS(:, i), 512));
+        H_rls = H_rls(1:512/2 +1);
+        plot(linspace(0,0.5,length(H_rls)), 20*log10(H_rls))
+        ylim([-40 10])
         title(sprintf('Frequency Domain Response at Index %d', i));
         xlabel('Normalized Frequency');
         ylabel('Magnitude');
         legend('LMS', 'NLMS', 'RLS');
         xlim([0, 0.5]);
         hold off;
+        
+%         subplot(2,1,2);  
+%         [~,~] = spectraEstimationSmall(weightLMS(:, i),'half',1);
+%         hold on;
+%         [~,~] = spectraEstimationSmall(weightNLMS(:, i),'half',1);
+%         [~,~] = spectraEstimationSmall(weightRLS(:, i),'half',1);
+%         ylim([-90 -10])
+%         title(sprintf('Frequency Domain Response at Index %d', i));
+%         xlabel('Normalized Frequency');
+%         ylabel('Magnitude');
+%         legend('LMS', 'NLMS', 'RLS');
+%         xlim([0, 0.5]);
+%         hold off;
 
         drawnow; 
         pause(0.0001);

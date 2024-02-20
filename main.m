@@ -36,9 +36,7 @@ disp(['Execution time of RLS  = ', num2str(t_rls), ' second(s)']);
 
 %% Plots
 
-dynamicWeightResponsePlot(thetahatlms, thetahatnlms, thetahatrls, 1:10:1000)
-pause(0.5)
-dynamicWeightResponsePlot(thetahatlms, thetahatnlms, thetahatrls, 1:200:length(y))
+dynamicWeightResponsePlot(thetahatlms, thetahatnlms, thetahatrls,[1:10:200 20:200:length(y)])
 plotComp(y, xhatlms, xhatnlms, xhatrls, yhatlms, yhatnlms, yhatrls)
 plotWeightProgress(thetahatlms, thetahatnlms, thetahatrls)
 

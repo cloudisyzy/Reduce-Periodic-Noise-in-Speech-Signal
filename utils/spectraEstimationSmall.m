@@ -9,7 +9,7 @@ function [pxx, f] = spectraEstimation(x, Option, plotFlag)
 %   Author: Ziyue Yang
 %   Date: 2024.01.27
 
-    [pxx, f] = pwelch(x, hamming(128), 64, 1024, 1, 'twosided');
+    [pxx, f] = pwelch(x, blackman(128), 64, 1024, 1, 'twosided');
     N = length(f);
     halfN = floor(N/2);
 
