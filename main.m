@@ -28,7 +28,7 @@ N_rls = 200;
 delay_rls = 32;
 lambda_rls = 0.99999;
 tic;
-[thetahatnrls, xhatrls, yhatrls] = rls(y,N_rls,lambda_rls,delay_rls);
+[thetahatnrls, xhatrls, yhatrls] = rls(y, N_rls, lambda_rls, delay_rls);
 t_rls = toc; 
 disp(['Execution time of RLS = ', num2str(t_rls), ' second(s)']);
 
@@ -50,8 +50,8 @@ pause(delta_t)
 soundsc(xhatlms, fs)
 pause(delta_t)
 soundsc(xhatnlms, fs)
-% pause(delta_t)
-% soundsc(xhat2nlms, fs)
+% % pause(delta_t)
+% % soundsc(xhat2nlms, fs)
 pause(delta_t)
 soundsc(xhatrls, fs)
 
