@@ -5,6 +5,8 @@ function dynamicWeightResponsePlot(weightLMS, weightNLMS, weightRLS, idxRange)
 %   Date: 2024.02.20
 
     figure;
+    sgtitle('Filter Progression', 'FontSize', 14);
+
     for i = idxRange
         clf;
 
@@ -14,8 +16,8 @@ function dynamicWeightResponsePlot(weightLMS, weightNLMS, weightRLS, idxRange)
         hold on; 
         stem(weightNLMS(:, i), 'r');
         stem(weightRLS(:, i), '-x', 'Color', '#77AC30'); 
-        title(sprintf('Filter Weights at Index %d - Time Domain', i));
-        xlabel('Index');
+        title(sprintf('Impulse Response at Index %d', i));
+        xlabel('Time');
         ylabel('Weight');
         legend('LMS', 'NLMS', 'RLS');
         ylim([-0.2, 0.2]);
@@ -34,8 +36,8 @@ function dynamicWeightResponsePlot(weightLMS, weightNLMS, weightRLS, idxRange)
         H_rls = H_rls(1:512/2 +1);
         plot(linspace(0,0.5,length(H_rls)), 20*log10(H_rls))
         ylim([-40 10])
-        title(sprintf('Frequency Domain Response at Index %d', i));
-        xlabel('Normalized Frequency');
+        title(sprintf('Frequency Response at Index %d', i));
+        xlabel('Normalized Frequency \nu');
         ylabel('Magnitude');
         legend('LMS', 'NLMS', 'RLS');
         xlim([0, 0.5]);
