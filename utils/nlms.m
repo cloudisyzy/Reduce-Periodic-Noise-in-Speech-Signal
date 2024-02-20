@@ -57,7 +57,7 @@ function [thetahat,xhat,yhat] = nlms(y,N,muu,c,delay)
 	    % corresponds to thetahat(n)
 	    thetahat(:, n+1) = thetahat(:, n) + normalized_muu * Y(:, n) * xhat(n);
         
-%         nlms(linspace(1,10,10)', 5, 0.01, 1, 0);
+%         nlms([1:10]', 5, 0.01, 1, 0);
 %         n
 %         Y(:, n)'
 %         y(n)

@@ -52,7 +52,7 @@ function [thetahat,xhat,yhat] = lms(y,N,muu,delay)
 	    % corresponds to thetahat(n)
 	    thetahat(:, n+1) = thetahat(:, n) + muu * Y(:, n) * xhat(n);
 
-%         lms(linspace(1,10,10)', 5, 0.01, 0);
+%         lms([1:10]', 5, 0.01, 0);
 %         n
 %         Y(:, n)'
 %         y(n)

@@ -61,7 +61,7 @@ function [thetahat,xhat,yhat] = rls(y,N,lambda,delay)
         % Update P
         P = (1/lambda) * (P - K(:, n) * Y(:, n)' * P);
 
-%         rls(linspace(1,10,10)', 5, 1, 0);
+%         rls([1:10]', 5, 1, 0);
 %         n
 %         Y(:, n)'
 %         y(n)
