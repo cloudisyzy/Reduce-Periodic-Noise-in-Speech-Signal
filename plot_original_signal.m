@@ -7,7 +7,7 @@ figure;
 plot(1:length(y),y)
 
 figure;
-[~,~] = spectraEstimation(y,'half',1);
+[~,~] = spectraEstimation(y,'full',1);
 
 figure;
 % [Y,f] = periodogram(y, hamming(length(y)), [], fs);
