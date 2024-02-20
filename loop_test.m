@@ -1,6 +1,4 @@
-clear; addpath('utils\');
-
-[y,fs]=audioread('EQ2401Project2data2024.wav');
+clear; clc; close all; addpath('utils\');[y,fs]=audioread('data/EQ2401Project2data2024.wav');
 
 N_lms = 200;
 delay_lms = 50;
