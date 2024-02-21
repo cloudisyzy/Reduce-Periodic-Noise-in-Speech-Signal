@@ -3,9 +3,11 @@ close all
 
 %% LMS
 
+% Tunable Parameters
 N_lms = 200;
 delay_lms = 32;
 step_lms = 0.02;
+
 tic;
 [thetahatlms, xhatlms, yhatlms] = lms(y, N_lms, step_lms, delay_lms); 
 t_lms = toc; 
@@ -13,10 +15,12 @@ disp(['Execution time of LMS  = ', num2str(t_lms), ' second(s)']);
 
 %% NLMS
 
+% Tunable Parameters
 N_nlms = 200;
 delay_nlms = 32;
 step_nlms = 0.1;
 c = 1;
+
 tic;
 [thetahatnlms, xhatnlms, yhatnlms] = nlms(y, N_lms, step_nlms, c, delay_nlms);
 t_nlms = toc; 
@@ -25,19 +29,25 @@ disp(['Execution time of NLMS = ', num2str(t_nlms), ' second(s)']);
 
 %% RLS
 
+% Tunable Parameters
 N_rls = 200;
 delay_rls = 32;
 lambda_rls = 1-1e-5;
+
 tic;
 [thetahatrls, xhatrls, yhatrls] = rls(y, N_rls, lambda_rls, delay_rls);
 t_rls = toc; 
 disp(['Execution time of RLS  = ', num2str(t_rls), ' second(s)']);
 
-
 %% Plots
 
-dynamicWeightResponsePlot(thetahatlms, thetahatnlms, thetahatrls,[1:10:200 20:200:length(y)])
+% Dynamically plot the impulse and frequency responses of filters with respect to time
+dynamicWeightResponsePlot(thetahatlms, thetahatnlms, thetahatrls,[1:10:200 200:200:length(y)-1])
+
+% Plot the waveforms and spectrums of 1.original noisy signal 2.estimated sinusoidal noise 3.denoised speech
 plotComp(y, xhatlms, xhatnlms, xhatrls, yhatlms, yhatnlms, yhatrls)
+
+% Randomly select 5 indexes, plot corresponding filter weights with respect to time
 plotWeightProgress(thetahatlms, thetahatnlms, thetahatrls)
 
 %% Play Sound, the order of sound: Original, LMS, NLMS, RLS
