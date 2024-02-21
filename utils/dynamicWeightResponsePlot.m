@@ -25,17 +25,17 @@ function dynamicWeightResponsePlot(weightLMS, weightNLMS, weightRLS, idxRange)
 
         % Frequency domain plot
         subplot(2,1,2);  
-        H_lms = abs(fft(weightLMS(:, i), 512));
-        H_lms = H_lms(1:512/2 +1);
-        plot(linspace(0,0.5,length(H_lms)), 20*log10(H_lms))
+        H_lms = abs(fft(weightLMS(:, i), 1024));
+        H_lms = H_lms(1:1024/2 +1);
+        plot(linspace(0,0.5,length(H_lms)), 20*log10(H_lms), 'b')
         hold on
-        H_nlms = abs(fft(weightNLMS(:, i), 512));
-        H_nlms = H_nlms(1:512/2 +1);
-        plot(linspace(0,0.5,length(H_nlms)), 20*log10(H_nlms))
-        H_rls = abs(fft(weightRLS(:, i), 512));
-        H_rls = H_rls(1:512/2 +1);
-        plot(linspace(0,0.5,length(H_rls)), 20*log10(H_rls))
-        ylim([-40 10])
+        H_nlms = abs(fft(weightNLMS(:, i), 1024));
+        H_nlms = H_nlms(1:1024/2 +1);
+        plot(linspace(0,0.5,length(H_nlms)), 20*log10(H_nlms), 'r')
+        H_rls = abs(fft(weightRLS(:, i), 1024));
+        H_rls = H_rls(1:1024/2 +1);
+        plot(linspace(0,0.5,length(H_rls)), 20*log10(H_rls), 'Color', '#77AC30')
+        ylim([-50 10])
         title(sprintf('Frequency Response at Index %d', i));
         xlabel('Normalized Frequency \nu');
         ylabel('Magnitude');
@@ -48,7 +48,7 @@ function dynamicWeightResponsePlot(weightLMS, weightNLMS, weightRLS, idxRange)
 %         hold on;
 %         [~,~] = spectraEstimationSmall(weightNLMS(:, i),'half',1);
 %         [~,~] = spectraEstimationSmall(weightRLS(:, i),'half',1);
-%         ylim([-90 -10])
+%         ylim([-40 10])
 %         title(sprintf('Frequency Domain Response at Index %d', i));
 %         xlabel('Normalized Frequency');
 %         ylabel('Magnitude');

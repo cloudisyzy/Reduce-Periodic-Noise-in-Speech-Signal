@@ -9,7 +9,7 @@ function [pxx, f] = spectraEstimation(x, Option, plotFlag)
 %   Author: Ziyue Yang
 %   Date: 2024.01.27
 
-    [pxx, f] = pwelch(x, blackman(128), 64, 1024, 1, 'twosided');
+    [pxx, f] = pwelch(x, hamming(128), 64, 1024, 1, 'twosided');
     N = length(f);
     halfN = floor(N/2);
 
@@ -21,7 +21,7 @@ function [pxx, f] = spectraEstimation(x, Option, plotFlag)
         pxx = pxx(1:halfN);
     end
     
-    pxx = 10*log10(pxx);
+    pxx = 10*log10(sqrt(pxx));
 
     if plotFlag
 %         semilogy(f, pxx, 'LineWidth',1.5)
