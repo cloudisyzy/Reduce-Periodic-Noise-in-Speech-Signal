@@ -1,4 +1,8 @@
 function plotComp(y, xhatlms, xhatnlms, xhatrls, yhatlms, yhatnlms, yhatrls)
+%   Plot the waveforms and spectrums of noisy speech, estimated periodic
+%   noise and estimated denoised speech
+%   Author: Ziyue Yang
+%   Date: 2024.02.21
 
     figure;
     sgtitle('Noisy Speech', 'FontSize', 14);

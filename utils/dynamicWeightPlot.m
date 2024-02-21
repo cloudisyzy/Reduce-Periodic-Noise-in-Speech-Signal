@@ -1,6 +1,6 @@
 function dynamicWeightPlot(weightLMS, weightNLMS, weightRLS, idxRange)
-%   Plot the evolution of weights for lms, nlms and rls for the first
-%   600 time steps
+%   Plot the evolution of weights for lms, nlms and rls for the given index
+%   range
 %   Author: Ziyue Yang
 %   Date: 2024.02.20
 

@@ -1,4 +1,9 @@
 function plotWeightProgress(weightLMS, weightNLMS, weightRLS)
+%   Randomly select 5 indexes out of filter taps, plot the progresses of
+%   the corresponding weights
+%   Author: Ziyue Yang
+%   Date: 2024.02.21
+
     idxList = sort(randperm(size(weightLMS,1), 5));
 
     figure;

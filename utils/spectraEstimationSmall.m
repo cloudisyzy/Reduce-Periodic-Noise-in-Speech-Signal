@@ -1,13 +1,13 @@
-function [pxx, f] = spectraEstimation(x, Option, plotFlag)
+function [pxx, f] = spectraEstimationSmall(x, Option, plotFlag)
 %   Using Welch Method to estimate the spectrum of given signals and give
-%   plot
+%   plot, assume x is short in length
 %   x - signal to be estimated
 %   Option ='full', or 'half'
 %   plotFlag =1, plot; =0, do not plot
 %   pxx - estimated spectrum
 %   f - nomarlized freq, from -0.5 to 0.5
 %   Author: Ziyue Yang
-%   Date: 2024.01.27
+%   Date: 2024.02.19
 
     [pxx, f] = pwelch(x, hamming(128), 64, 1024, 1, 'twosided');
     N = length(f);
