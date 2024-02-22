@@ -16,6 +16,7 @@ function plotWeightProgress(weightLMS, weightNLMS, weightRLS, n)
     end
     title('LMS')
     xlim([1 size(weightLMS,2)])
+    ylim([-0.05 0.05])
 
     subplot(3,1,2)
     for i = idxList
@@ -24,6 +25,7 @@ function plotWeightProgress(weightLMS, weightNLMS, weightRLS, n)
     end
     title('NLMS')
     xlim([1 size(weightNLMS,2)])
+    ylim([-0.05 0.05])
 
     subplot(3,1,3)
     for i = idxList
@@ -32,6 +34,7 @@ function plotWeightProgress(weightLMS, weightNLMS, weightRLS, n)
     end
     title('RLS')
     xlim([1 size(weightRLS,2)])
+    ylim([-0.05 0.05])
 
 end
 
