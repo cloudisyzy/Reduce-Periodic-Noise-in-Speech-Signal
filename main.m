@@ -15,6 +15,7 @@ N_lms = 200;
 delay_lms = 32;
 step_lms = 0.02;
 [~] = judgeStabilityLMS(y, N_lms, step_lms, 0); % Judge whether LMS is stable for given params
+
 tic;
 [thetahatlms, xhatlms, yhatlms] = lms(y, N_lms, step_lms, delay_lms); 
 t_lms = toc; 
@@ -26,6 +27,7 @@ N_nlms = 200;
 delay_nlms = 32;
 step_nlms = 0.2;
 c = 1;
+
 tic;
 [thetahatnlms, xhatnlms, yhatnlms] = nlms(y, N_lms, step_nlms, c, delay_nlms);
 t_nlms = toc; 
@@ -36,6 +38,7 @@ disp(['Execution time of NLMS = ', num2str(t_nlms), ' second(s)']);
 N_rls = 200;
 delay_rls = 32;
 lambda_rls = 1-1e-5;
+
 tic;
 [thetahatrls, xhatrls, yhatrls] = rls(y, N_rls, lambda_rls, delay_rls);
 t_rls = toc; 

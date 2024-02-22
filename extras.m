@@ -1,6 +1,7 @@
 % clear; clc; close all
 addpath('utils\'); addpath('functions\')
 [y,fs]=audioread('data/EQ2401Project2data2024.wav');
+disp('Now executing other LMS-related algorthims')
 fprintf(['Sequential order of what you hear:\n1. LMS (as a reference)\n' ...
     '2. Leaky LMS\n3. Sign Error\n4. Sign Regressor\n5. Sign Sign\n' ...
     '6. LMS Volterra\n7. Momentum LMS\n'])
