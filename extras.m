@@ -1,14 +1,15 @@
 % clear; clc; close all
-addpath('utils\');[y,fs]=audioread('data/EQ2401Project2data2024.wav');
+addpath('utils\'); addpath('functions\')
+[y,fs]=audioread('data/EQ2401Project2data2024.wav');
 fprintf(['Sequential order of what you hear:\n1. LMS (as a reference)\n' ...
     '2. Leaky LMS\n3. Sign Error\n4. Sign Regressor\n5. Sign Sign\n' ...
     '6. LMS Volterra\n7. Momentum LMS\n'])
 
 %% LMS
-% N_lms = 200;
-% delay_lms = 32;
-% step_lms = 0.02;
-% [thetahatlms, xhatlms, yhatlms] = lms(y, N_lms, step_lms, delay_lms); 
+N_lms = 200;
+delay_lms = 32;
+step_lms = 0.02;
+[thetahatlms, xhatlms, yhatlms] = lms(y, N_lms, step_lms, delay_lms); 
 
 %% LeakyLMS
 N_lmsleaky = 200;
@@ -68,3 +69,11 @@ pause(delta_t)
 soundsc(xhatlmsVolterra, fs)
 pause(delta_t)
 soundsc(xhatlmsMomentum, fs)
+
+%% Save Audio Files
+% audiowrite('results\LMS_Leaky.wav', xhatlmsleaky, fs);
+% audiowrite('results\SignError.wav', xhatsignError, fs);
+% audiowrite('results\SignRegressor.wav', xhatsignRegressor, fs);
+% audiowrite('results\SignSign.wav', xhatsignSign, fs);
+% audiowrite('results\LMS_Volterra.wav', xhatlmsVolterra, fs);
+% audiowrite('results\LMS_Momentum.wav', xhatlmsMomentum, fs);

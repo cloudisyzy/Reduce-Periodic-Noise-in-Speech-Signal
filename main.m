@@ -24,13 +24,12 @@ disp(['Execution time of LMS  = ', num2str(t_lms), ' second(s)']);
 %   Tunable Parameters
 N_nlms = 200;
 delay_nlms = 32;
-step_nlms = 0.1;
+step_nlms = 0.2;
 c = 1;
 tic;
 [thetahatnlms, xhatnlms, yhatnlms] = nlms(y, N_lms, step_nlms, c, delay_nlms);
 t_nlms = toc; 
 disp(['Execution time of NLMS = ', num2str(t_nlms), ' second(s)']);
-% [thetahat2nlms, xhat2nlms, yhatn2lms] = nlms(xhatnlms, N_lms, step_nlms, c, delay_nlms);
 
 %% RLS
 %   Tunable Parameters
@@ -49,7 +48,7 @@ dynamicWeightResponsePlot(thetahatlms, thetahatnlms, thetahatrls,[1:10:200 200:2
 plotComp(y, xhatlms, xhatnlms, xhatrls, yhatlms, yhatnlms, yhatrls)
 %   Randomly select 5 indexes, plot corresponding filter weights with respect to time
 plotWeightProgress(thetahatlms, thetahatnlms, thetahatrls, 5)
-fprintf('Sequential order of what you hear:\n1. LMS\n2. NLMS\n3. RLS\n')
+fprintf('Sequential order of what you hear:\n1. Original Noisy Speech\n2. LMS\n3. NLMS\n4. RLS\n')
 
 %% Play Sound, the order of sound: Original, LMS, NLMS, RLS
 delta_t = length(y)/fs + 0.5;
@@ -58,19 +57,16 @@ pause(delta_t)
 soundsc(xhatlms, fs)
 pause(delta_t)
 soundsc(xhatnlms, fs)
-% pause(delta_t)
-% soundsc(xhat2nlms, fs)
 pause(delta_t)
 soundsc(xhatrls, fs)
 pause(delta_t)
 
-%% Extras, using other LMS-related Algorithms from the Last Lecture
-%   Comment out the below line if you only want to see lms,nlms,rls
+%% Extras, using other LMS-related Algorithms from the Last Lecture 
+%   Comment out the below line if you only want to see lms, nlms, and rls
 run extras.m
 
 %% Save Audio Files
 
-% audiowrite(sprintf('results/LMS_%d_%d_%.2f.wav',N_lms,delay_lms,step_lms), xhatlms, fs);
-% audiowrite(sprintf('results/NLMS_%d_%d_%.1f_%.2f.wav.wav',N_nlms,delay_nlms,c,step_nlms), xhatnlms, fs);
-% audiowrite(sprintf('results/RLS_%d_%d_%.6f.wav.wav',N_rls,delay_rls,lambda_rls), xhatrls, fs);
-% % audiowrite('results\EQ2401project1data2024.wav', y, fs);
+% audiowrite('results\LMS.wav', xhatlms, fs);
+% audiowrite('results\NLMS.wav', xhatnlms, fs);
+% audiowrite('results\RLS.wav', xhatrls, fs);
