@@ -1,13 +1,13 @@
-function plotWeightProgress(weightLMS, weightNLMS, weightRLS)
-%   Randomly select 5 indexes out of filter taps, plot the progresses of
+function plotWeightProgress(weightLMS, weightNLMS, weightRLS, n)
+%   Randomly select n indexes out of filter taps, plot the progresses of
 %   the corresponding weights
 %   Author: Ziyue Yang
 %   Date: 2024.02.21
 
-    idxList = sort(randperm(size(weightLMS,1), 5));
+    idxList = sort(randperm(size(weightLMS,1), n));
 
     figure;
-    sgtitle('The progress of 5 weights from random indexes', 'FontSize', 14);
+    sgtitle(sprintf('The progress of %d weights from random indexes',n), 'FontSize', 14);
 
     subplot(3,1,1)
     for i = idxList
