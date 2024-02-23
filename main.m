@@ -26,10 +26,10 @@ disp(['Execution time of LMS  = ', num2str(t_lms), ' second(s)']);
 N_nlms = 200;
 delay_nlms = 32;
 step_nlms = 0.2;
-c = 1;
+c_nlms = 1e-3; % c_nlms = 1; step_nlms = 0.2; very close to LMS
 
 tic;
-[thetahatnlms, xhatnlms, yhatnlms] = nlms(y, N_lms, step_nlms, c, delay_nlms);
+[thetahatnlms, xhatnlms, yhatnlms] = nlms(y, N_lms, step_nlms, c_nlms, delay_nlms);
 t_nlms = toc; 
 disp(['Execution time of NLMS = ', num2str(t_nlms), ' second(s)']);
 

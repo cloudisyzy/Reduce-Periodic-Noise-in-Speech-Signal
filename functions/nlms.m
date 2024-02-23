@@ -51,7 +51,7 @@ function [thetahat,xhat,yhat] = nlms(y,N,muu,c,delay)
         xhat(n) = y(n) - yhat(n);
 
         % Compute the normalized step size
-        normalized_muu = muu/(c + sum(Y(:, n).^2));
+        normalized_muu = muu/(c + norm(Y(:, n), 2)^2);
     
 	    % Update the n+1 row in the matrix thetahat which in the notation in the Lecture Notes
 	    % corresponds to thetahat(n)

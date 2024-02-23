@@ -43,8 +43,8 @@ step_signSign = 1e-4;
 %% LMS Volterra
 N_lmsVolterra = 200;
 delay_lmsVolterra = 32;
-step_lmsVolterra = 9e-4;
-[thetahatlmsVolterra, xhatlmsVolterra, yhatlmsVolterra] = lmsVolterra(y, ...
+step_lmsVolterra = 0.02;
+[thetahatlmsVolterra, xhatlmsVolterra, yhatlmsVolterra] = lmsSinVolterra(y, ...
     N_lmsVolterra, step_lmsVolterra, delay_lmsVolterra);
 
 %% Momentum LMS
