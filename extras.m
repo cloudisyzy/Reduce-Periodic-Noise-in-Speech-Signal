@@ -2,9 +2,7 @@
 addpath('utils\'); addpath('functions\')
 [y,fs]=audioread('data/EQ2401Project2data2024.wav');
 disp('Now executing other LMS-related algorthims')
-fprintf(['Sequential order of what you hear:\n1. LMS (as a reference)\n' ...
-    '2. Leaky LMS\n3. Sign Error\n4. Sign Regressor\n5. Sign Sign\n' ...
-    '6. LMS Volterra\n7. Momentum LMS\n'])
+fprintf('Sequential order of what you hear:')
 
 %% LMS
 N_lms = 200;
@@ -43,7 +41,7 @@ step_signSign = 1e-4;
 %% LMS Volterra
 N_lmsVolterra = 200;
 delay_lmsVolterra = 32;
-step_lmsVolterra = 0.02;
+step_lmsVolterra = 0.006;
 [thetahatlmsVolterra, xhatlmsVolterra, yhatlmsVolterra] = lmsSinVolterra(y, ...
     N_lmsVolterra, step_lmsVolterra, delay_lmsVolterra);
 
@@ -51,24 +49,31 @@ step_lmsVolterra = 0.02;
 N_lmsMomentum = 200;
 delay_lmsMomentum = 32;
 step_lmsMomentum = 0.02;
-gamma_lmsMomentum = 0.1;
+gamma_lmsMomentum = 0.02;
 [thetahatlmsMomentum, xhatlmsMomentum, yhatlmsMomentum] = lmsMomentum(y, ...
     N_lmsMomentum, step_lmsMomentum, delay_lmsMomentum, gamma_lmsMomentum);
 
 %% Play Sound
 delta_t = length(y)/fs + 0.5;
+fprintf('\n1. LMS (as a reference)')
 soundsc(xhatlms, fs)
 pause(delta_t)
+fprintf('\n2. Leaky LMS')
 soundsc(xhatlmsleaky, fs)
 pause(delta_t)
+fprintf('\n3. Sign Error')
 soundsc(xhatsignError, fs)
 pause(delta_t)
+fprintf('\n4. Sign Regressor')
 soundsc(xhatsignRegressor, fs)
 pause(delta_t)
+fprintf('\n5. Sign Sign')
 soundsc(xhatsignSign, fs)
 pause(delta_t)
+fprintf('\n6. LMS Volterra')
 soundsc(xhatlmsVolterra, fs)
 pause(delta_t)
+fprintf('\n7. Momentum LMS\n')
 soundsc(xhatlmsMomentum, fs)
 
 %% Save Audio Files

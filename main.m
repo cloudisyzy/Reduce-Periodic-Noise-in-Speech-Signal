@@ -1,5 +1,6 @@
 clear; clc; addpath('utils\'); addpath('functions\'); [y,fs]=audioread('data/EQ2401Project2data2024.wav');
 close all
+commandwindow;
 % Notations
 %     y       -   Noisy Speech Signal
 %     yhat    -   Estimated Sinusoidal Noise, e.g., yhat_lms is the noise estimated via LMS
@@ -51,21 +52,26 @@ dynamicWeightResponsePlot(thetahatlms, thetahatnlms, thetahatrls,[1:10:200 200:2
 plotComp(y, xhatlms, xhatnlms, xhatrls, yhatlms, yhatnlms, yhatrls)
 %   Randomly select 5 indexes, plot corresponding filter weights with respect to time
 plotWeightProgress(thetahatlms, thetahatnlms, thetahatrls, 5)
-fprintf('Sequential order of what you hear:\n1. Original Noisy Speech\n2. LMS\n3. NLMS\n4. RLS\n')
+fprintf('Sequential order of what you hear:')
 
 %% Play Sound, the order of sound: Original, LMS, NLMS, RLS
 delta_t = length(y)/fs + 0.5;
+fprintf('\n1. Original Noisy Speech')
 soundsc(y, fs)
 pause(delta_t)
+fprintf('\n2. LMS')
 soundsc(xhatlms, fs)
 pause(delta_t)
+fprintf('\n3. NLMS')
 soundsc(xhatnlms, fs)
 pause(delta_t)
+fprintf('\n4. RLS\n')
 soundsc(xhatrls, fs)
 pause(delta_t)
 
 %% Extras, using other LMS-related Algorithms from the Last Lecture 
 %   Comment out the below line if you only want to see lms, nlms, and rls
+pause(2)
 run extras.m
 
 %% Save Audio Files
