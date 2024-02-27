@@ -41,7 +41,7 @@ step_signSign = 1e-4;
 %% LMS Volterra
 N_lmsVolterra = 200;
 delay_lmsVolterra = 32;
-step_lmsVolterra = 0.006;
+step_lmsVolterra = 0.008;
 [thetahatlmsVolterra, xhatlmsVolterra, yhatlmsVolterra] = lmsSinVolterra(y, ...
     N_lmsVolterra, step_lmsVolterra, delay_lmsVolterra);
 

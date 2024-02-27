@@ -43,7 +43,7 @@ function [thetahat,xhat,yhat] = lmsSinVolterra(y,N,muu,delay)
             Y(end, n+1) = y(n-delay); 
         end
 
-        Phi = [Y(:, n); sin(Y(:, n))];
+        Phi = [Y(:, n); asin(Y(:, n))];
         
 	    % Estimate of noise
         yhat(n) = Phi' * thetahat(:, n);
