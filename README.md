@@ -6,17 +6,12 @@ This project focuses on reducing periodic noise in speech signals using various 
 
 ## Table of Contents
 
-- [Installation](#installation)
 - [Usage](#usage)
   - [Main Scripts](#main-scripts)
   - [Additional Scripts](#additional-scripts)
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Dependencies](#dependencies)
-
-## Installation
-
-Instructions on how to install and set up your project. This section should include steps to clone the repository, install necessary dependencies, and any other setup required.
 
 ## Usage
 
