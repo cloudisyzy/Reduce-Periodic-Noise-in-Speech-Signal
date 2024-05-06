@@ -1,4 +1,4 @@
-# EQ2401-Reduce-Periodic-Noise-in-Speech-Signal
+# Reduce-Periodic-Noise-in-Speech-Signal
 
 ## Introduction
 
